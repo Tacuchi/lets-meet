@@ -54,6 +54,9 @@ dependencies {
 
     implementation(libs.androidx.core.splashscreen)
 
+    implementation("androidx.navigation:navigation-fragment:2.8.2")
+    implementation("androidx.navigation:navigation-ui:2.8.2")
+
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore)
