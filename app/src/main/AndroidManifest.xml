@@ -13,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Letsmeet">
         <activity
+            android:name=".presentation.settings.view.SettingsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_settings" />
+        <activity
             android:name=".presentation.main.view.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Letsmeet.Starting">

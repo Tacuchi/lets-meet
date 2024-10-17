@@ -5,7 +5,6 @@ import com.tacuchi.lets_meet.presentation.main.view.MainActivity
 import javax.inject.Inject
 
 class MainPresenter @Inject constructor(
-    private val router: MainContract.Router,
     private val interactor: MainContract.Interactor
 ) : MainContract.Presenter {
 
@@ -13,13 +12,12 @@ class MainPresenter @Inject constructor(
 
     override fun attachView(view: MainContract.View) {
         this.view = view
-        this.router.attachActivity(view as MainActivity)
     }
 
     override fun checkUserStatus() {
         interactor.isUserLoggedIn { isLoggedIn ->
             if (!isLoggedIn) {
-                router.navigateToLogin()
+                view.navigateToLogin()
             } else {
                 view.initFragments()
             }

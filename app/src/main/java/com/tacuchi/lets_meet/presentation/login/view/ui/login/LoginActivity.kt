@@ -14,6 +14,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.tacuchi.lets_meet.R
 import com.tacuchi.lets_meet.databinding.ActivityLoginBinding
+import com.tacuchi.lets_meet.domain.entity.User
 import com.tacuchi.lets_meet.presentation.login.LoginContract
 
 
@@ -115,6 +116,14 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
     }
 
     override fun showLoginError(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun navigateToHome(user: User) {
+        TODO("Not yet implemented")
+    }
+
+    override fun navigateToRegister() {
         TODO("Not yet implemented")
     }
 }

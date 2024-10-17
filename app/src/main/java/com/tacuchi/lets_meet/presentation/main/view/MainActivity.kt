@@ -36,7 +36,9 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
         presenter.attachView(this)
 
-        presenter.checkUserStatus()
+        initFragments()
+
+        //presenter.checkUserStatus()
     }
 
     override fun initFragments() {
@@ -57,5 +59,9 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
     override fun showMessage(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun navigateToLogin() {
+        TODO("Not yet implemented")
     }
 }

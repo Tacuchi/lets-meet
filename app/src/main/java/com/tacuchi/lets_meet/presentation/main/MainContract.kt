@@ -1,11 +1,10 @@
 package com.tacuchi.lets_meet.presentation.main
 
-import com.tacuchi.lets_meet.presentation.main.view.MainActivity
-
 interface MainContract {
     interface View {
         fun initFragments()
         fun showMessage(msg: String)
+        fun navigateToLogin()
     }
 
     interface Presenter {
@@ -15,10 +14,5 @@ interface MainContract {
 
     interface Interactor {
         fun isUserLoggedIn(callback: (Boolean) -> Unit)
-    }
-
-    interface Router {
-        fun attachActivity(activity: MainActivity)
-        fun navigateToLogin()
     }
 }
