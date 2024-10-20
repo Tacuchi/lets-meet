@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.login.view.ui.login.LoginActivity"
+            android:name=".presentation.login.view.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login" />
     </application>

@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
+    alias(libs.plugins.androidx.navigation.safeargs.kotlin)
     alias(libs.plugins.google.dagger.hilt.android)
     alias(libs.plugins.ksp)
 }
@@ -49,13 +50,11 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
 
     implementation(libs.androidx.core.splashscreen)
 
-    implementation("androidx.navigation:navigation-fragment:2.8.2")
-    implementation("androidx.navigation:navigation-ui:2.8.2")
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
 
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)

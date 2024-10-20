@@ -1,7 +1,6 @@
 package com.tacuchi.lets_meet.presentation.login.presenter
 
 import com.tacuchi.lets_meet.presentation.login.LoginContract
-import com.tacuchi.lets_meet.presentation.login.view.ui.login.LoginActivity
 import javax.inject.Inject
 
 class LoginPresenter @Inject constructor(
@@ -14,8 +13,8 @@ class LoginPresenter @Inject constructor(
         this.view = view
     }
 
-    override fun onLoginButtonClicked(email: String, password: String) {
-        interactor.login({ user ->
+    override fun login(email: String, password: String) {
+        interactor.signIn({ user ->
             if (user != null) {
                 view.navigateToHome(user)
             } else {

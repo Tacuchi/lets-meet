@@ -1,5 +1,6 @@
 package com.tacuchi.lets_meet.presentation.main.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -11,6 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.tacuchi.lets_meet.R
 import com.tacuchi.lets_meet.databinding.ActivityMainBinding
+import com.tacuchi.lets_meet.presentation.login.view.LoginActivity
 import com.tacuchi.lets_meet.presentation.main.MainContract
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -36,9 +38,9 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
         presenter.attachView(this)
 
-        initFragments()
+//        initFragments()
 
-        //presenter.checkUserStatus()
+        presenter.checkUserStatus()
     }
 
     override fun initFragments() {
@@ -62,6 +64,8 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     override fun navigateToLogin() {
-        TODO("Not yet implemented")
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

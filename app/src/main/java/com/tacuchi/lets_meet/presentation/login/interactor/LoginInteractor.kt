@@ -12,9 +12,9 @@ class LoginInteractor @Inject constructor(
     private val authRepository: AuthRepository
 ) : LoginContract.Interactor {
 
-    override fun login(callback: (User?) -> Unit, email: String, password: String) {
+    override fun signIn(callback: (User?) -> Unit, email: String, password: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            val result = authRepository.login(email, password)
+            val result = authRepository.signIn(email, password)
             callback(result.getOrNull())
         }
     }

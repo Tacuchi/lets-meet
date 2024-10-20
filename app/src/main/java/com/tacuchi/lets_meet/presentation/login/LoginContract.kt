@@ -11,10 +11,10 @@ interface LoginContract {
 
     interface Presenter {
         fun attachView(view: View)
-        fun onLoginButtonClicked(email: String, password: String)
+        fun login(email: String, password: String)
     }
 
     interface Interactor {
-        fun login(callback: (User?) -> Unit, email: String, password: String)
+        fun signIn(callback: (User?) -> Unit, email: String, password: String)
     }
 }
