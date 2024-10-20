@@ -3,8 +3,9 @@ package com.tacuchi.lets_meet.presentation.profile.interactor
 import com.tacuchi.lets_meet.domain.repository.AuthRepository
 import com.tacuchi.lets_meet.domain.repository.ProfileRepository
 import com.tacuchi.lets_meet.presentation.profile.ProfileContract
+import javax.inject.Inject
 
-class ProfileInteractor constructor(
+class ProfileInteractor @Inject constructor(
     private val profileRepository: ProfileRepository,
     private val authRepository: AuthRepository
 ) : ProfileContract.Interactor {

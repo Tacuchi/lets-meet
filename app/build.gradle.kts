@@ -64,6 +64,7 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.preference)
+    implementation(libs.androidx.activity)
     ksp(libs.hilt.android.compiler)
 
     testImplementation(libs.junit)

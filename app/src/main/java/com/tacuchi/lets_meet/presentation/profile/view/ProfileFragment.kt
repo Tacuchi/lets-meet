@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.tacuchi.lets_meet.databinding.FragmentProfileBinding
+import com.tacuchi.lets_meet.presentation.login.view.LoginActivity
 import com.tacuchi.lets_meet.presentation.profile.ProfileContract
-import com.tacuchi.lets_meet.presentation.settings.view.SettingsActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -35,7 +35,7 @@ class ProfileFragment : Fragment(), ProfileContract.View {
         textView.text = "This is profile Fragment"
 
         binding.btnSettings.setOnClickListener {
-            findNavController().navigate(ProfileFragmentDirections.actionNavigationProfileToSettingsActivity())
+            findNavController().navigate(ProfileFragmentDirections.actionNavigationProfileToSettingsFragment())
         }
 
         binding.btnLogout.setOnClickListener {
@@ -57,7 +57,8 @@ class ProfileFragment : Fragment(), ProfileContract.View {
     }
 
     override fun returnToLogin() {
-        findNavController().navigate(ProfileFragmentDirections.actionNavigationProfileToLoginActivity())
+        val intent = Intent(activity, LoginActivity::class.java)
+        startActivity(intent)
         activity?.finish()
     }
 }
