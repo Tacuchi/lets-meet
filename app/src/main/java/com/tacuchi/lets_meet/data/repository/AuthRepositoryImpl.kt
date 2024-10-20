@@ -11,21 +11,16 @@ class AuthRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth
 ) : AuthRepository {
 
-    var user: User? = null
-        private set
-
     override suspend fun signIn(email: String, password: String): Result<User> {
         return try {
             val authResult = firebaseAuth.signInWithEmailAndPassword(email, password).await()
             val firebaseUser = authResult.user
             if (firebaseUser != null) {
-                // Si el login es exitoso, retornamos la entidad User
                 val user = User(
                     id = firebaseUser.uid,
                     name = firebaseUser.displayName ?: "Usuario",
                     email = firebaseUser.email ?: ""
                 )
-                setCurrentUser(user)
                 Result.success(user)
             } else {
                 Result.failure(Exception("Usuario no encontrado"))
@@ -41,11 +36,5 @@ class AuthRepositoryImpl @Inject constructor(
 
     override fun signOut() {
         firebaseAuth.signOut()
-    }
-
-    private fun setCurrentUser(user: User) {
-        this.user = user
-        // If user credentials will be cached in local storage, it is recommended it be encrypted
-        // @see https://developer.android.com/training/articles/keystore
     }
 }

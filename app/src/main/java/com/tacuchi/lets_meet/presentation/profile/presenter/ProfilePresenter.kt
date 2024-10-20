@@ -19,4 +19,10 @@ class ProfilePresenter @Inject constructor(
             view.showProfile(profile)
         }
     }
+
+    override fun logout() {
+        interactor.logout {
+            view.returnToLogin()
+        }
+    }
 }

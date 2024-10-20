@@ -28,6 +28,8 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        presenter.attachView(this)
+
         binding.login.setOnClickListener {
             binding.login.visibility = View.VISIBLE
             presenter.login(binding.username.text.toString(), binding.password.text.toString())
@@ -45,13 +47,13 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         ).show()
     }
 
-    private fun showLoginFailed(@StringRes errorString: Int) {
-        Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
+    private fun showLoginFailed(error: String) {
+        Toast.makeText(applicationContext, error, Toast.LENGTH_SHORT).show()
     }
 
     override fun showLoginError(message: String) {
         binding.loading.visibility = View.GONE
-        showLoginFailed(R.string.login_failed)
+        showLoginFailed(message)
     }
 
     override fun navigateToHome(user: User) {

@@ -14,11 +14,13 @@ class LoginPresenter @Inject constructor(
     }
 
     override fun login(email: String, password: String) {
-        interactor.signIn({ user ->
-            if (user != null) {
-                view.navigateToHome(user)
-            } else {
-                view.showLoginError("Login failed")
+        interactor.signIn({ user, errorMessage ->
+            view.let {
+                if (user != null) {
+                    it.navigateToHome(user)
+                } else {
+                    it.showLoginError(errorMessage ?: "Login failed")
+                }
             }
         }, email, password)
     }

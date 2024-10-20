@@ -7,6 +7,7 @@ interface LoginContract {
         fun showLoginError(message: String)
         fun navigateToHome(user: User)
         fun navigateToRegister()
+        // je.loayzat@gmail.com / 123456
     }
 
     interface Presenter {
@@ -15,6 +16,6 @@ interface LoginContract {
     }
 
     interface Interactor {
-        fun signIn(callback: (User?) -> Unit, email: String, password: String)
+        fun signIn(callback: (User?, String?) -> Unit, email: String, password: String)
     }
 }

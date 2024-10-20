@@ -1,5 +1,6 @@
 package com.tacuchi.lets_meet.di
 
+import com.tacuchi.lets_meet.domain.repository.AuthRepository
 import com.tacuchi.lets_meet.domain.repository.ProfileRepository
 import com.tacuchi.lets_meet.presentation.profile.ProfileContract
 import com.tacuchi.lets_meet.presentation.profile.interactor.ProfileInteractor
@@ -23,6 +24,7 @@ class ProfileModule {
     @Provides
     @Singleton
     fun provideProfileInteractor(
-        profileRepository: ProfileRepository
-    ): ProfileContract.Interactor = ProfileInteractor(profileRepository)
+        profileRepository: ProfileRepository,
+        authRepository: AuthRepository
+    ): ProfileContract.Interactor = ProfileInteractor(profileRepository, authRepository)
 }

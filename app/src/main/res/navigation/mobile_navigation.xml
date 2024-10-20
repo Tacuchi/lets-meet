@@ -35,6 +35,24 @@
         android:id="@+id/navigation_profile"
         android:name="com.tacuchi.lets_meet.presentation.profile.view.ProfileFragment"
         android:label="@string/profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_profile_to_loginActivity"
+            app:destination="@id/loginActivity" />
+        <action
+            android:id="@+id/action_navigation_profile_to_settingsActivity"
+            app:destination="@id/settingsActivity"
+            app:popUpTo="@id/navigation_profile" />
+    </fragment>
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.tacuchi.lets_meet.presentation.login.view.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+    <activity
+        android:id="@+id/settingsActivity"
+        android:name="com.tacuchi.lets_meet.presentation.settings.view.SettingsActivity"
+        android:label="SettingsActivity"
+        tools:layout="@layout/settings_activity"/>
 
 </navigation>
