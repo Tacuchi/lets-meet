@@ -8,6 +8,7 @@ interface LoginContract {
         fun navigateToHome(user: User)
         fun navigateToRegister()
         // je.loayzat@gmail.com / 123456
+        // usuario1@gmail.com / 123456
     }
 
     interface Presenter {

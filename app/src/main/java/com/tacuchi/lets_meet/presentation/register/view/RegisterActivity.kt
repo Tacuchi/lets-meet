@@ -7,29 +7,41 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.tacuchi.lets_meet.R
+import com.tacuchi.lets_meet.databinding.ActivityRegisterBinding
 import com.tacuchi.lets_meet.presentation.main.view.MainActivity
 import com.tacuchi.lets_meet.presentation.register.RegisterContract
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class RegisterActivity : AppCompatActivity(), RegisterContract.View {
+
+    private lateinit var binding: ActivityRegisterBinding
+
+    @Inject
+    lateinit var presenter: RegisterContract.Presenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_register)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        presenter.attachView(this)
+
+        binding.register.setOnClickListener {
+            presenter.register(
+                binding.username.text.toString(),
+                binding.password.text.toString()
+            )
         }
     }
 
     override fun showLoading() {
-        TODO("Not yet implemented")
     }
 
     override fun hideLoading() {
-        TODO("Not yet implemented")
     }
 
     override fun navigateToHome() {
@@ -39,6 +51,5 @@ class RegisterActivity : AppCompatActivity(), RegisterContract.View {
     }
 
     override fun showError() {
-        TODO("Not yet implemented")
     }
 }

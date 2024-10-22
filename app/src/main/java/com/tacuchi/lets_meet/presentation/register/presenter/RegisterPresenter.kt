@@ -14,6 +14,12 @@ class RegisterPresenter @Inject constructor(
     }
 
     override fun register(email: String, password: String) {
-        TODO("Not yet implemented")
+        view.showLoading()
+        interactor.register(email, password) { _, _ ->
+            view.let {
+                it.navigateToHome()
+                it.hideLoading()
+            }
+        }
     }
 }

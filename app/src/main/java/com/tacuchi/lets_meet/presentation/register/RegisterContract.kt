@@ -1,6 +1,6 @@
 package com.tacuchi.lets_meet.presentation.register
 
-class RegisterContract {
+interface RegisterContract {
     interface View {
         fun showLoading()
         fun hideLoading()
@@ -14,6 +14,6 @@ class RegisterContract {
     }
 
     interface Interactor {
-        fun register(callback: (Boolean, String?) -> Unit, email: String, password: String)
+        fun register(email: String, password: String, callback: (Boolean, String?) -> Unit)
     }
 }

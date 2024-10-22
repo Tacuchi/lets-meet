@@ -11,6 +11,7 @@ import com.tacuchi.lets_meet.databinding.ActivityLoginBinding
 import com.tacuchi.lets_meet.domain.entity.User
 import com.tacuchi.lets_meet.presentation.login.LoginContract
 import com.tacuchi.lets_meet.presentation.main.view.MainActivity
+import com.tacuchi.lets_meet.presentation.register.view.RegisterActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -32,7 +33,11 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
         binding.login.setOnClickListener {
             binding.login.visibility = View.VISIBLE
-            presenter.login(binding.username.text.toString(), binding.password.text.toString())
+            presenter.login(binding.username.toString() , binding.password.toString())
+        }
+
+        binding.register?.setOnClickListener {
+            navigateToRegister()
         }
     }
 
@@ -63,6 +68,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
     }
 
     override fun navigateToRegister() {
-        TODO("Not yet implemented")
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
     }
 }
