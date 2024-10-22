@@ -44,6 +44,9 @@ class RegisterActivity : AppCompatActivity(), RegisterContract.View {
     override fun hideLoading() {
     }
 
+    override fun showSuccess() {
+    }
+
     override fun navigateToHome() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)

@@ -4,6 +4,7 @@ interface RegisterContract {
     interface View {
         fun showLoading()
         fun hideLoading()
+        fun showSuccess()
         fun navigateToHome()
         fun showError()
     }
