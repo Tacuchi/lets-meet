@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class SettingsInteractor @Inject constructor(
 ) : SettingsContract.Interactor {
-    override fun fetchSettings(callback: (Settings) -> Unit) {
+    override fun fetchSettings(callback: (Settings, String?) -> Unit) {
         TODO("Not yet implemented")
     }
 

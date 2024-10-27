@@ -14,7 +14,7 @@ class SettingsPresenter @Inject constructor(
         this.view = view
     }
 
-    override fun fetchSettings(settings: Settings) {
+    override fun getSettings(settings: Settings) {
         TODO("Not yet implemented")
     }
 

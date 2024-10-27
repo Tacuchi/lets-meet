@@ -8,13 +8,16 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.tacuchi.lets_meet.databinding.FragmentHomeBinding
+import com.tacuchi.lets_meet.domain.entity.Contact
+import com.tacuchi.lets_meet.domain.entity.Meeting
+import com.tacuchi.lets_meet.presentation.home.HomeContract
+import dagger.hilt.android.AndroidEntryPoint
 
-class HomeFragment : Fragment() {
+@AndroidEntryPoint
+class HomeFragment : Fragment(), HomeContract.View {
 
     private var _binding: FragmentHomeBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -34,5 +37,25 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun showLoading() {
+        TODO("Not yet implemented")
+    }
+
+    override fun hideLoading() {
+        TODO("Not yet implemented")
+    }
+
+    override fun showUpcomingMeetings(meetings: List<Meeting>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showContacts(contacts: List<Contact>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showError() {
+        TODO("Not yet implemented")
     }
 }

@@ -33,7 +33,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
         binding.login.setOnClickListener {
             binding.login.visibility = View.VISIBLE
-            presenter.login(binding.username.toString() , binding.password.toString())
+            presenter.login(binding.usernameLayout?.editText?.text.toString(), binding.passwordLayout?.editText?.text.toString())
         }
 
         binding.register?.setOnClickListener {

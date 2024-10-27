@@ -12,12 +12,12 @@ interface SettingsContract {
 
     interface Presenter {
         fun attachView(view: View)
-        fun fetchSettings(settings: Settings)
+        fun getSettings(settings: Settings)
         fun updateSettings(settings: Settings)
     }
 
     interface Interactor {
-        fun fetchSettings(callback: (Settings) -> Unit)
+        fun fetchSettings(callback: (Settings, String?) -> Unit)
         fun updateSettings(settings: Settings, callback: (Settings?, String?) -> Unit)
     }
 }

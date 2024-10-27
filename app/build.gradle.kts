@@ -65,6 +65,8 @@ dependencies {
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.preference)
     implementation(libs.androidx.activity)
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.recyclerview)
     ksp(libs.hilt.android.compiler)
 
     testImplementation(libs.junit)

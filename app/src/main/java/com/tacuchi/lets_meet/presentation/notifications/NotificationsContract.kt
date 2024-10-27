@@ -12,7 +12,7 @@ interface NotificationsContract {
 
     interface Presenter {
         fun attachView(view: View)
-        fun fetchNotifications(notifications: List<Notification>)
+        fun getNotifications(notifications: List<Notification>)
     }
 
     interface Interactor {
