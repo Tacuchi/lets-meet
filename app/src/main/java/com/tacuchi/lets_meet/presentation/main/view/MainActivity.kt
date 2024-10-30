@@ -3,11 +3,17 @@ package com.tacuchi.lets_meet.presentation.main.view
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.tacuchi.lets_meet.R
@@ -21,6 +27,8 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity(), MainContract.View {
 
     private var isLoading: Boolean = true
+    private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
     @Inject
@@ -30,9 +38,26 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         val splashScreen = installSplashScreen()
 
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        WindowCompat.setDecorFitsSystemWindows(
+            window,
+            false
+        )
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
+            val systemBarsInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(
+                systemBarsInsets.left,
+                systemBarsInsets.top,
+                systemBarsInsets.right,
+                systemBarsInsets.bottom
+            )
+            insets
+        }
 
         splashScreen.setKeepOnScreenCondition { isLoading }
 
@@ -44,17 +69,17 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     override fun initFragments() {
-        val navView: BottomNavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        navController = findNavController(R.id.nav_host_fragment_activity_main)
 
-        val appBarConfiguration = AppBarConfiguration(
+        val navView: BottomNavigationView = binding.navView
+        navView.setupWithNavController(navController)
+
+        appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_notifications, R.id.navigation_profile
+                R.id.home_navigation, R.id.notifications_navigation, R.id.profile_navigation
             )
         )
-
         setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
 
         isLoading = false
     }
@@ -67,5 +92,9 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp(appBarConfiguration)
     }
 }

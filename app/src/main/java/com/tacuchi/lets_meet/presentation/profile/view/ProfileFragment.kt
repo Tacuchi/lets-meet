@@ -35,7 +35,7 @@ class ProfileFragment : Fragment(), ProfileContract.View {
         textView.text = "This is profile Fragment"
 
         binding.btnSettings.setOnClickListener {
-            findNavController().navigate(ProfileFragmentDirections.actionNavigationProfileToSettingsFragment())
+            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToSettingsFragment())
         }
 
         binding.btnLogout.setOnClickListener {

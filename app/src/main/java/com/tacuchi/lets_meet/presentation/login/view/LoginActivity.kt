@@ -6,6 +6,10 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import com.tacuchi.lets_meet.R
 import com.tacuchi.lets_meet.databinding.ActivityLoginBinding
 import com.tacuchi.lets_meet.domain.entity.User
@@ -25,9 +29,26 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        WindowCompat.setDecorFitsSystemWindows(
+            window,
+            false
+        )
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
+            val systemBarsInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(
+                systemBarsInsets.left,
+                systemBarsInsets.top,
+                systemBarsInsets.right,
+                systemBarsInsets.bottom
+            )
+            insets
+        }
 
         presenter.attachView(this)
 
